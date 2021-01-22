@@ -3,7 +3,12 @@
 
 package main
 
-import "fmt"
+// Importing fmt, io and os
+import (
+	"fmt"
+	"io"
+	"os"
+)
 
 // Main function
 func main() {
@@ -16,8 +21,8 @@ func main() {
 	go func() {
 		mychnl <- "GFG"
 		mychnl <- "gfg"
-		mychnl <- "Geeks"
-		mychnl <- "GeeksforGeeks"
+		mychnl <- "Test"
+		mychnl <- "test123"
 		close(mychnl)
 	}()
 
@@ -25,4 +30,13 @@ func main() {
 	for res := range mychnl {
 		fmt.Println(res)
 	}
+
+	const name, dept = "Test", "CS"
+
+	// Calling Sprintf() function
+	s := fmt.Sprintf("%s is a %s Portal.\n", name, dept)
+
+	// Calling WriteString() function to write the
+	// contents of the string "s" to "os.Stdout"
+	io.WriteString(os.Stdout, s)
 }
