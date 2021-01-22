@@ -1,24 +1,24 @@
-// Go program to illustrate
-// the concept of Goroutine
 package main
 
 import (
 	"fmt"
+	"math/rand"
 	"time"
 )
 
-func display(str string) {
-	for w := 0; w < 6; w++ {
-		time.Sleep(1 * time.Second)
-		fmt.Println(str)
+func f(n int) {
+	for i := 0; i < 10; i++ {
+		fmt.Println(n, ":", i)
+		amt := time.Duration(rand.Intn(250))
+		time.Sleep(time.Millisecond * amt)
 	}
 }
 
-func main() {
-
-	// Calling Goroutine
-	go display("Welcome")
-
-	// Calling normal function
-	display("Test")
+//GoRoutineExample function
+func GoRoutineExample() {
+	for i := 0; i < 10; i++ {
+		go f(i)
+	}
+	var input string
+	fmt.Scanln(&input)
 }
